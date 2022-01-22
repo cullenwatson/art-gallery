@@ -4,8 +4,8 @@ project(22s_pa01_cullen_w)
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(src)
-include_directories(input)
-configure_file(input/input.txt input.txt COPYONLY)
+
+configure_file(input.txt input.txt COPYONLY)
 
 add_executable(22s_pa01_cullen_w
         src/Algos.h

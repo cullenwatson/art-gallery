@@ -37,14 +37,14 @@ Algos::Algos(string file){
         }
     }while(found!=-1);
 
-    target = "../input";
+    /*target = "../input";
     found = -1;
     do{
         found = fileName.find(target, found+1);
         if(found!=-1){
             fileName=fileName.substr(0,found)+fileName.substr(found+target.length());
         }
-    }while(found!=-1);
+    }while(found!=-1);*/
 
 
     // read in input
@@ -84,8 +84,8 @@ void Algos::bruteForce() {
     makeSubset(pSet, subset, 0);
 
     // cout << "OPTIMAL SET\n";
-    cout<<fileName<<endl;
-    ofstream f("../output/" + fileName + "-bruteforce.txt");
+    //cout<<fileName<<endl;
+    ofstream f( fileName + "-bruteforce.txt");
     if(f){
         f << "       ---Value of Gallery $" << setprecision(2)<< fixed<<float(optimalCost) << "---"<<endl;
         f << setw(10)<<"[id]" << setw(10)<<"[value]"<< setw(10)<<"[width]"<< setw(10)<<"[height]"<<endl;
