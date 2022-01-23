@@ -78,6 +78,7 @@ void Algos::outputOptimalSet(){
 
 
 void Algos::bruteForce() {
+
     optimalCost = 0;
     vector<Painting> subset;
     makeSubset(pSet, subset, 0);

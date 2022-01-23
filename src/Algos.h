@@ -8,7 +8,7 @@
 #include<string>
 #include<iomanip>
 #include "Painting.h"
-#include <bits/stdc++.h>
+#include <algorithm>
 
 class Algos{
     int wallWidth, wallHeight, numPics;
