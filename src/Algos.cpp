@@ -52,9 +52,8 @@ Algos::Algos(string file){
     fileName = file;
     string target = ".txt";
     removeSubstring(fileName, target);
-    target = "../input";
+    target = "../input/";
     removeSubstring(fileName, target);
-
     // read in input
     processFile(file);
 }
@@ -85,7 +84,7 @@ void Algos::bruteForce() {
 
     // cout << "OPTIMAL SET\n";
     //cout<<fileName<<endl;
-    fileName = "../output/" + fileName + "-bruteforce.txt";
+    fileName += "-bruteforce.txt";
     outputOptimalSet();
 
 }
