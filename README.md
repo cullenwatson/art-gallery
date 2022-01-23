@@ -17,3 +17,6 @@ Due to brute force being a very slow algorithm and most valuable first alogrrith
 
 **BUILDING THE PROJECT**
 After cloning the repo, navigate to the working directory in the command prompt of the project folder. Once there, create a build folder and navigate to it. Build the program by typing 'cmake ..' and then typing 'make'. Afterwards, to run the exe for Mac/Linux type: ./{name of executable} {name of input file}. The default input file is located in '../input/input.txt'. The 3 output files (one for each algo) will be outputted in the current directory
+
+**Performance of Each Algo**
+The brute force algo was near instant for about 25 paintings. However, with just an increase in 5 paintings, the run time increased to 35 seconds, which makes sense for a O(2^n) time complexity. For that reason, the brute force algorithm only runs if the input files has less than 30 paintings. On the other hand, the two other algos had near instant runtime even up to the max limit of 100,000 paintings. In terms of highest value paintings performance, the brute force always won of course. In terms of the custom algo and high value, if the input size is fairly large with a large variety of pictures size, the custom algo did perform better due to taking into consideration the sizing. However for small datasets, the highest value and custom algo usually performed similar
