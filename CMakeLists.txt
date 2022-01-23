@@ -13,4 +13,6 @@ add_executable(22s_pa01_cullen_w
         src/Algos.h
         src/main.cpp
         src/Painting.cpp
-        src/Painting.h)
+        src/Painting.h
+        src/Algos.cpp)
+
