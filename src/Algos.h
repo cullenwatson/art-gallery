@@ -24,8 +24,7 @@ class Algos{
     void outputOptimalSet();
 public:
     Algos(string);
-    void bruteForce();
-    void expFirstAlgo();
+
     void customAlgo();
 
 };
