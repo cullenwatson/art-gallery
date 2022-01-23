@@ -5,6 +5,7 @@ Problem:
 An art gallery has given you a list of paintings with their value and associated dimensions. The goal is to place each picture along one wall of given dimensions so that the placement to give you the highest value of paintings. However, you are only able to place the paingings along the center of the wall, so width is the only factor that can determine if there's space left along the wall.
 
 Algorithms used to Solve the Problem:
+
 **BRUTE FORCE ALGORITHM**
 This method uses every possible subset of paintings and then determines the total width and value of each subset. If the placement has a width that is less than or equal to the wall and a value greater than the current highest value placement, the new placement is the winner. Continue this process for every subset of the list of paintings.
 
