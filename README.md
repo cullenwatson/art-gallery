@@ -1,7 +1,7 @@
 **The Art Gallery**
 by Cullen Watson
 
-Problem:
+**Problem:**
 An art gallery has given you a list of paintings with their value and associated dimensions. The goal is to place each picture along one wall of given dimensions so that the placement to give you the highest value of paintings. However, you are only able to place the paingings along the center of the wall, so width is the only factor that can determine if there's space left along the wall.
 
 Algorithms used to Solve the Problem:
