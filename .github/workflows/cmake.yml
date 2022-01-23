@@ -13,6 +13,7 @@ env:
   TEST_EXE: 22s_pa01_cullen_w
   # the name of any input files (use relative path)
   INPUT_FILE: input.txt
+  OUTPUT_FILE: input-bruteforce.txt input-custom.txt input-highvalue.txt
 
 
 jobs:
