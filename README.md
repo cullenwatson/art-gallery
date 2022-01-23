@@ -13,7 +13,7 @@ This method uses every possible subset of paintings and then determines the tota
 Alternatively to the brute force is the most valuable first algorithm. This sorts the entire list of paintings in descending order of value. It then repeatedly places onto the wall the next highest value painting that will fit. This process continues until there is no more room on the wall.
 
 **SELF-DESIGNED HEURISTIC ALGORITHM**
-Due to brute force being a very slow algorithm and most valuable first alogrrithm being very quick, the self-designed algorithm is medium between the two. Instead of repeatedly placing each most valuable piece onto the wall, this algorithm first checks its width. If the width is larger than 1000, it skips onto the next painting. This way we can still have a quick algorithm but takes into consideration how large the painting is to get more accurate results.
+Due to brute force being a very slow algorithm and most valuable first alogrrithm being very quick, this algorithm is a medium between the two. Instead of repeatedly placing each most valuable piece onto the wall, this algorithm first checks its width. If the width is larger than 1000, it skips onto the next painting. This way we can still have a quick algorithm but takes into consideration how large the painting is to get more accurate results.
 
 **BUILDING THE PROJECT**
 After cloning the repo, navigate the working directory of command promppt to the folder where main.cpp is located. Once there, type g++ main.cpp to compile the program. Afterwards, to run type ./(name of executable)
