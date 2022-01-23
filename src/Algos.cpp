@@ -1,29 +1,7 @@
 #include"Algos.h"
 void removeSubstring(string&, string);
 
-void Algos::customAlgo(){
-    // reset optimal vars
-    oSet.clear();
-    optimalCost = 0;
-
-    sort(pSet.begin(), pSet.end());
-
-    int totalWidth = 0, totalVal = 0;
-
-    for(int i=0;i<pSet.size(); i++){
-        if(totalWidth == wallWidth)
-            break;
-        else if(pSet[i].getWidth() < 1000 && totalWidth + pSet[i].getWidth() <= wallWidth){
-            oSet.push_back(pSet[i]);
-            optimalCost += pSet[i].getVal();
-            totalWidth += pSet[i].getWidth();
-        }
-    }
-    removeSubstring(fileName,"-highvalue.txt");
-    fileName += "-custom.txt";
-    outputOptimalSet();
-}
-void Algos::expFirstAlgo(){
+id Algos::expFirstAlgo(){
     // reset optimal vars
     oSet.clear();
     optimalCost = 0;

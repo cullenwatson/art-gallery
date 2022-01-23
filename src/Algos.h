@@ -26,7 +26,7 @@ public:
     Algos(string);
     void bruteForce();
     void expFirstAlgo();
-    void customAlgo();
+
 
 };
 

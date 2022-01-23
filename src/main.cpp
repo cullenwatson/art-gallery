@@ -17,9 +17,6 @@ int main(int argc, char** argv) {
     cout<<".complete!"<<endl<<endl;
 
 
-    cout<<"Running custom algo.."<<flush;
-    a.customAlgo();
-    cout<<".complete!"<<endl<<endl;
 
     return 0;
 }
