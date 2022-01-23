@@ -77,6 +77,9 @@ void Algos::outputOptimalSet(){
 
 
 void Algos::bruteForce() {
+    if(numPics>29)
+        return;
+    cout<<"Running brute force algo.."<<flush;
 
     optimalCost = 0;
     vector<Painting> subset;
@@ -86,6 +89,7 @@ void Algos::bruteForce() {
     //cout<<fileName<<endl;
     fileName += "-bruteforce.txt";
     outputOptimalSet();
+    cout<<".complete!"<<endl<<endl;
 
 }
 void Algos::processFile(string file){
