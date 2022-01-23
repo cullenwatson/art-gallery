@@ -10,14 +10,14 @@ public:
     Painting(int, int, int, int);
 
     // relational operators
-    bool operator==(const Painting&) const;
+    //bool operator==(const Painting&) const;
     bool operator<(const Painting&) const;
 
     // accessors
     int getId() const { return id; };
     int getVal() const { return val; };
     int getWidth() const { return width; };
-    int getLength() const { return height; };
+    int getHeight() const { return height; };
 
     // output
     friend ostream& operator<<(ostream&, const Painting&);

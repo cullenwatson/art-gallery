@@ -8,49 +8,115 @@
 #include<string>
 #include<iomanip>
 #include "Painting.h"
+#include <bits/stdc++.h>
+void removeSubstring(string&, string);
+
 class Algos{
     int wallWidth, wallHeight, numPics;
     string fileName;
     vector<Painting> pSet;
 
-    // for brute force
+    // reset for each algo
     vector<Painting> oSet;
     int optimalCost;
 
     void processFile(string);
     void makeSubset(vector<Painting>&, vector<Painting>&, int);
+    void outputOptimalSet();
 public:
     Algos(string);
     void bruteForce();
+    void expFirstAlgo();
+    void customAlgo();
 
 };
+void Algos::customAlgo(){
+    // reset optimal vars
+    oSet.clear();
+    optimalCost = 0;
+
+    sort(pSet.begin(), pSet.end());
+
+    int totalWidth = 0, totalVal = 0;
+
+    for(int i=0;i<pSet.size(); i++){
+        if(totalWidth == wallWidth)
+            break;
+        else if(pSet[i].getWidth() < 1000 && totalWidth + pSet[i].getWidth() <= wallWidth){
+            oSet.push_back(pSet[i]);
+            optimalCost += pSet[i].getVal();
+            totalWidth += pSet[i].getWidth();
+        }
+    }
+    removeSubstring(fileName,"-highvalue.txt");
+    fileName += "-custom.txt";
+    outputOptimalSet();
+}
+void Algos::expFirstAlgo(){
+    // reset optimal vars
+    oSet.clear();
+    optimalCost = 0;
+
+    sort(pSet.begin(), pSet.end());
+
+    int totalWidth = 0, totalVal = 0;
+
+    for(int i=0;i<pSet.size(); i++){
+        if(totalWidth == wallWidth)
+            break;
+        else if(totalWidth + pSet[i].getWidth() <= wallWidth){
+            oSet.push_back(pSet[i]);
+            optimalCost += pSet[i].getVal();
+            totalWidth += pSet[i].getWidth();
+        }
+    }
+    removeSubstring(fileName,"-bruteforce.txt");
+    fileName += "-highvalue.txt";
+    outputOptimalSet();
+
+}
+
 Algos::Algos(string file){
     // remove .txt from filename
     fileName = file;
     string target = ".txt";
-
-    int found = -1;
-    do{
-        found = fileName.find(target, found+1);
-        if(found!=-1){
-            fileName=fileName.substr(0,found)+fileName.substr(found+target.length());
-        }
-    }while(found!=-1);
-
-    /*target = "../input";
-    found = -1;
-    do{
-        found = fileName.find(target, found+1);
-        if(found!=-1){
-            fileName=fileName.substr(0,found)+fileName.substr(found+target.length());
-        }
-    }while(found!=-1);*/
-
+    removeSubstring(fileName, target);
+    target = "../input";
+    removeSubstring(fileName, target);
 
     // read in input
     processFile(file);
 }
+void Algos::outputOptimalSet(){
+    ofstream f( fileName);
+    if(f){
+        f << "             Wall Size: " << wallWidth<<"x"<<wallHeight << "      "<<endl;
+        f << "       ---Value of Gallery $" << setprecision(2)<< fixed<<float(optimalCost) << "---"<<endl;
 
+        f << setw(10)<<"[id]" << setw(10)<<"[value]"<< setw(10)<<"[width]"<< setw(10)<<"[height]"<<endl;
+
+        for (int i = 0; i < oSet.size(); i++) {
+            f << oSet[i];
+        }
+        f.close();
+    }
+    else{
+        cout<<"Could not open output file for writing"<<endl;
+    }
+}
+
+
+void Algos::bruteForce() {
+    optimalCost = 0;
+    vector<Painting> subset;
+    makeSubset(pSet, subset, 0);
+
+    // cout << "OPTIMAL SET\n";
+    //cout<<fileName<<endl;
+    fileName = "../output/" + fileName + "-bruteforce.txt";
+    outputOptimalSet();
+
+}
 void Algos::processFile(string file){
     ifstream f(file);
 
@@ -78,45 +144,22 @@ void Algos::processFile(string file){
         exit(1);
     }
 }
-void Algos::bruteForce() {
-    optimalCost = 0;
-    vector<Painting> subset;
-    makeSubset(pSet, subset, 0);
-
-    // cout << "OPTIMAL SET\n";
-    //cout<<fileName<<endl;
-    ofstream f( fileName + "-bruteforce.txt");
-    if(f){
-        f << "       ---Value of Gallery $" << setprecision(2)<< fixed<<float(optimalCost) << "---"<<endl;
-        f << setw(10)<<"[id]" << setw(10)<<"[value]"<< setw(10)<<"[width]"<< setw(10)<<"[height]"<<endl;
-
-        for (int i = 0; i < oSet.size(); i++) {
-            f << oSet[i];
-        }
-        f.close();
-    }
-    else{
-        cout<<"Could not open output file for writing"<<endl;
-    }
-
-}
 void Algos::makeSubset(vector<Painting>& a, vector<Painting>& subset, int index){
 
     if(index>0){
-        int totalVal=0, totalWidth = 0;
+        int totalCost=0, totalWidth = 0;
         for(int i=0; i<subset.size();i++){
             //cout<<subset[i];
-            totalVal+=subset[i].getVal();
+            totalCost+=subset[i].getVal();
             totalWidth+=subset[i].getWidth();
 
         }
         /*if(totalWidth>wallWidth)
             cout<<"TOO WIDE ";*/
-        if(!(totalWidth>wallWidth)){
-            if(totalVal > optimalCost){
-                oSet = pSet;
-                optimalCost = totalVal;
-            }
+        if(totalWidth <= wallWidth && totalCost > optimalCost){
+                oSet = subset;
+                optimalCost = totalCost;
+                cout<<totalWidth<< " "<<totalCost<<endl;
         }
         // cout<< "$: "<<totalVal << endl << endl;
     }
@@ -135,6 +178,14 @@ void Algos::makeSubset(vector<Painting>& a, vector<Painting>& subset, int index)
         subset.pop_back();
     }
 }
-
+void removeSubstring(string& str, string target){
+    int found = -1;
+    do{
+        found = str.find(target, found+1);
+        if(found!=-1){
+            str=str.substr(0,found)+str.substr(found+target.length());
+        }
+    }while(found!=-1);
+}
 
 #endif //CS3353_PA01_ALGOS_H
