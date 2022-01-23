@@ -25,7 +25,7 @@ class Algos{
 public:
     Algos(string);
     void bruteForce();
-    void expFirstAlgo();
+
 
 
 };

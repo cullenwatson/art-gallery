@@ -1,30 +1,6 @@
 #include"Algos.h"
 void removeSubstring(string&, string);
 
-id Algos::expFirstAlgo(){
-    // reset optimal vars
-    oSet.clear();
-    optimalCost = 0;
-
-    sort(pSet.begin(), pSet.end());
-
-    int totalWidth = 0, totalVal = 0;
-
-    for(int i=0;i<pSet.size(); i++){
-        if(totalWidth == wallWidth)
-            break;
-        else if(totalWidth + pSet[i].getWidth() <= wallWidth){
-            oSet.push_back(pSet[i]);
-            optimalCost += pSet[i].getVal();
-            totalWidth += pSet[i].getWidth();
-        }
-    }
-    removeSubstring(fileName,"-bruteforce.txt");
-    fileName += "-highvalue.txt";
-    outputOptimalSet();
-
-}
-
 Algos::Algos(string file){
     // remove .txt from filename
     fileName = file;
