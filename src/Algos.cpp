@@ -1,7 +1,12 @@
 #include"Algos.h"
+#include <chrono>
 void removeSubstring(string&, string);
 
 void Algos::customAlgo(){
+    std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
+
+    //get the current time, run the algo, then get the current time again
+    start = std::chrono::high_resolution_clock::now();
     // reset optimal vars
     oSet.clear();
     optimalCost = 0;
@@ -22,8 +27,19 @@ void Algos::customAlgo(){
     removeSubstring(fileName,"-highvalue.txt");
     fileName += "-custom.txt";
     outputOptimalSet();
+    end = std::chrono::high_resolution_clock::now();
+
+    //calculate the duration between start and end and print to the terminal
+    std::chrono::duration<double> time_in_seconds = end - start;
+    cout<<".complete!"<<endl;
+    std::cout << std::fixed << "Duration: " << time_in_seconds.count() << std::endl<<endl;
+
 }
 void Algos::expFirstAlgo(){
+    std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
+
+    //get the current time, run the algo, then get the current time again
+    start = std::chrono::high_resolution_clock::now();
     // reset optimal vars
     oSet.clear();
     optimalCost = 0;
@@ -44,6 +60,13 @@ void Algos::expFirstAlgo(){
     removeSubstring(fileName,"-bruteforce.txt");
     fileName += "-highvalue.txt";
     outputOptimalSet();
+    end = std::chrono::high_resolution_clock::now();
+
+    //calculate the duration between start and end and print to the terminal
+    std::chrono::duration<double> time_in_seconds = end - start;
+    cout<<".complete!";
+    std::cout <<endl<< std::fixed << "Duration: " << time_in_seconds.count() << std::endl<<endl;
+
 
 }
 
@@ -81,6 +104,11 @@ void Algos::bruteForce() {
         return;
     cout<<"Running brute force algo.."<<flush;
 
+    std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
+
+    //get the current time, run the algo, then get the current time again
+    start = std::chrono::high_resolution_clock::now();
+
     optimalCost = 0;
     vector<Painting> subset;
     makeSubset(pSet, subset, 0);
@@ -89,7 +117,14 @@ void Algos::bruteForce() {
     //cout<<fileName<<endl;
     fileName += "-bruteforce.txt";
     outputOptimalSet();
-    cout<<".complete!"<<endl<<endl;
+    cout<<".complete!"<<endl;
+
+    end = std::chrono::high_resolution_clock::now();
+
+    //calculate the duration between start and end and print to the terminal
+    std::chrono::duration<double> time_in_seconds = end - start;
+    std::cout << std::fixed << "Duration: " << time_in_seconds.count() << std::endl<<endl;
+
 
 }
 void Algos::processFile(string file){
