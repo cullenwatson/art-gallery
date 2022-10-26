@@ -1,6 +1,8 @@
 **The Art Gallery**
 by Cullen Watson
 
+CS 3353 - Spring 2022 - Programming Assignment 01
+
 **Problem:**
 An art gallery has given you a list of paintings with their value and associated dimensions. The goal is to place each picture along one wall of given dimensions so that the placement gives you the highest value of paintings. However, you are only able to place the paintings along the center of the wall, so width is the only factor that determines if there's space left along the wall.
 
